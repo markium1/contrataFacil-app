@@ -2,6 +2,7 @@ import React from "react";
 import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
+import { Link } from "react-router-dom";
 
 const Header = () => {
   return (
@@ -9,10 +10,10 @@ const Header = () => {
       <header>
         <Navbar bg="dark" data-bs-theme="dark">
           <Container>
-            <Navbar.Brand href="#home">Logo</Navbar.Brand>
+            <Navbar.Brand href="/">Logo</Navbar.Brand>
             <Nav className="me-auto">
-              <Nav.Link href="#features">Serviços</Nav.Link>
-              <Nav.Link href="#pricing">Prestadores de Serviços</Nav.Link>
+              <Link to={`/servicos`}>Servicos</Link>
+              <Link to={`/prestadores`}>Prestadores de Serviços</Link>
             </Nav>
           </Container>
         </Navbar>
