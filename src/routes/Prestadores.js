@@ -1,4 +1,5 @@
 import React from "react";
+import axios from "axios";
 import Table from "react-bootstrap/Table";
 import TablePrestadores from "../Components/TablePrestadores/TablePrestadores";
 import { useState, useEffect } from "react";
@@ -8,13 +9,17 @@ const Prestadores = () => {
 
   const getPrestadores = async () => {
     try {
-      //const response = axios.get("uri");
-      //const data = response.data;
-      //setPrestadores(data);
+      const response = await axios.get("http://localhost:8000/api/prestador");
+      const { data } = response.data;
+      setPrestadores(data);
     } catch (error) {
       console.log(error);
     }
   };
+
+  useEffect(() => {
+    getPrestadores();
+  }, [])
 
   return (
     <div className="p-2">
@@ -27,13 +32,16 @@ const Prestadores = () => {
           </tr>
         </thead>
         <tbody>
-          <TablePrestadores
-            prestador={{
-              nome: "Renata",
-              telefone: "82996094565",
-              email: "renata@gmail.com",
-            }}
-          />
+          {prestadores.length === 0 ? <p>Carregando...</p> : (
+
+            prestadores.map((prestador) => (
+                <TablePrestadores
+                  key={prestador.id}
+                  prestador={prestador}
+                />
+            ))
+          )}
+
         </tbody>
       </Table>
     </div>

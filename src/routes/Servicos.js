@@ -1,20 +1,24 @@
 import React from "react";
-import TabelaServicos from "../Components/TableServicos/TableServicos";
+import axios from "axios";
 import { useState, useEffect } from "react";
 import Table from "react-bootstrap/Table";
+import TableServicos from "../Components/TableServicos/TableServicos";
 const Servicos = () => {
   const [servicos, setServicos] = useState([]);
 
   const getServicos = async () => {
     try {
-      //const response = axios.get("uri");
-      //const data = response.data;
-      //setServicos(data);
+      const response = await axios.get("http://localhost:8000/api/servico");
+      const {data} = response.data;
+      console.log(data)
+      setServicos(data);
     } catch (error) {
       console.log(error);
     }
   };
-
+  useEffect(() => {
+    getServicos();
+  }, [])
   return (
     <div className="p-2">
       <Table striped bordered hover variant="dark">
@@ -27,14 +31,15 @@ const Servicos = () => {
           </tr>
         </thead>
         <tbody>
-          <TabelaServicos
-            servico={{
-              nome: "Cuidadora",
-              descricao: "A melhor do mundo graças a Deus, pai!",
-              valor: 100,
-              prestador: "Renata",
-            }}
-          />
+           {servicos.length === 0 ? <p>Carregando...</p> : (
+
+              servicos.map((servico) => (
+                <TableServicos
+                  key={servico.id}
+                  servico={servico}
+                />
+            ))
+          )}
         </tbody>
       </Table>
     </div>

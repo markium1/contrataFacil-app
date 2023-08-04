@@ -6,7 +6,7 @@ const TableServicos = ({ servico }) => {
       <td>{servico.nome}</td>
       <td>{servico.descricao}</td>
       <td>R$ {servico.valor}</td>
-      <td>{servico.prestador}</td>
+      <td>{servico.id_prestador}</td>
     </tr>
   );
 };
