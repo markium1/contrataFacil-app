@@ -1,5 +1,5 @@
 import React from "react";
-import axios from "axios";
+import api from "../axios/config";
 import { useState, useEffect } from "react";
 import Table from "react-bootstrap/Table";
 import TableServicos from "../Components/TableServicos/TableServicos";
@@ -8,9 +8,9 @@ const Servicos = () => {
 
   const getServicos = async () => {
     try {
-      const response = await axios.get("http://localhost:8000/api/servico");
-      const {data} = response.data;
-      console.log(data)
+      const response = await api.get("/servico");
+      const { data } = response.data;
+      console.log(data);
       setServicos(data);
     } catch (error) {
       console.log(error);
@@ -18,10 +18,11 @@ const Servicos = () => {
   };
   useEffect(() => {
     getServicos();
-  }, [])
+  }, []);
   return (
-    <div className="p-2">
-      <Table striped bordered hover variant="dark">
+    <div className="p-3 table-responsive card shadow mb-5 bg-white rounded">
+      <h2 className="font-weight-bold">Lista</h2>
+      <Table striped hover>
         <thead>
           <tr>
             <th>Titulo</th>
@@ -31,13 +32,11 @@ const Servicos = () => {
           </tr>
         </thead>
         <tbody>
-           {servicos.length === 0 ? <p>Carregando...</p> : (
-
-              servicos.map((servico) => (
-                <TableServicos
-                  key={servico.id}
-                  servico={servico}
-                />
+          {servicos.length === 0 ? (
+            <p>Carregando...</p>
+          ) : (
+            servicos.map((servico) => (
+              <TableServicos key={servico.id} servico={servico} />
             ))
           )}
         </tbody>

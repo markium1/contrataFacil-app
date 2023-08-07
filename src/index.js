@@ -9,6 +9,8 @@ import { createBrowserRouter, RouterProvider, Route } from "react-router-dom";
 import Home from "./routes/Home";
 import Prestadores from "./routes/Prestadores";
 import Servicos from "./routes/Servicos";
+import FormularioPrestador from "./routes/FormularioPrestador";
+import FormularioServico from "./routes/FormularioServico";
 
 const router = createBrowserRouter([
   {
@@ -25,6 +27,14 @@ const router = createBrowserRouter([
       {
         path: "/servicos",
         element: <Servicos />,
+      },
+      {
+        path: "/cadastro-prestador",
+        element: <FormularioPrestador />,
+      },
+      {
+        path: "/cadastro-servico",
+        element: <FormularioServico />,
       },
     ],
   },

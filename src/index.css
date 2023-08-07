@@ -5,10 +5,33 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: rgb(249, 252, 229);
+  background-color: #0e1217;
+  color: #fff;
 }
-
+*{
+  margin: 0;
+  padding: 0;
+  font-family: "Blinker";
+}
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
+}
+
+ul{
+  list-style: none;
+}
+a{
+  text-decoration: none;
+  color: #fff;
+  opacity: 0.7;
+  transition: 0.3s;
+}
+
+a:hover{
+  opacity: 1;
+}
+
+p{
+  color:#a9abb3;
 }

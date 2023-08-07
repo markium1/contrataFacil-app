@@ -1,22 +1,36 @@
 import React from "react";
-import Container from "react-bootstrap/Container";
-import Nav from "react-bootstrap/Nav";
-import Navbar from "react-bootstrap/Navbar";
 import { Link } from "react-router-dom";
-
+import "./Header.css";
 const Header = () => {
   return (
     <>
       <header>
-        <Navbar bg="dark" data-bs-theme="dark">
-          <Container>
-            <Navbar.Brand href="/">Logo</Navbar.Brand>
-            <Nav className="me-auto">
+        <nav className="navbar">
+          <h2>
+            <Link to={`/`}>ContrataFacil</Link>
+          </h2>
+          <ul>
+            <li>
               <Link to={`/servicos`}>Servicos</Link>
+            </li>
+            <li>
               <Link to={`/prestadores`}>Prestadores de Serviços</Link>
-            </Nav>
-          </Container>
-        </Navbar>
+            </li>
+          </ul>
+
+          <ul className="new-btn">
+            <li>
+              <Link to={`/cadastro-prestador`}>
+                <button>Cadastrar Prestador</button>
+              </Link>
+            </li>
+            <li>
+              <Link to={`/cadastro-servico`}>
+                <button>Cadastrar Serviço</button>
+              </Link>
+            </li>
+          </ul>
+        </nav>
       </header>
     </>
   );
