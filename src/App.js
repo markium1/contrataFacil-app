@@ -7,7 +7,7 @@ const App = () => {
   return (
     <>
       <Header />
-      <Container>
+      <Container className="p-3">
         <Outlet />
       </Container>
     </>

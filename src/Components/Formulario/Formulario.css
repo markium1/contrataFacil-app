@@ -9,7 +9,7 @@ form {
   margin: 0 auto;
 }
 
-.form-control {
+.formulario-control {
   display: flex;
   flex-direction: column;
   margin-bottom: 1rem;
@@ -18,12 +18,12 @@ form {
   border: none;
 }
 
-.form-control label {
+.formulario-control label {
   margin-bottom: 0.5rem;
   color: #fff;
 }
 
-.form-control input,
+.formulario-control input,
 textarea,
 select {
   padding: 0.5rem;

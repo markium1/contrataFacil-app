@@ -1,12 +1,12 @@
 import React from "react";
-import Table from "react-bootstrap/Table";
+
 const TableServicos = ({ servico }) => {
   return (
     <tr>
       <td>{servico.nome}</td>
       <td>{servico.descricao}</td>
       <td>R$ {servico.valor}</td>
-      <td>{servico.id_prestador}</td>
+      <td>{servico.prestador.nome}</td>
     </tr>
   );
 };

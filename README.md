@@ -1,70 +1,89 @@
-# Getting Started with Create React App
+# ContrataFácil APP
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Bem-vindo à documentação do APP ContrataFácil! Esta aplicação permite realizar diversas operações relacionadas a Cadastro e consultas de Prestadores de Serviços e os Serviços.
 
-## Available Scripts
+## Instalação do projeto
 
-In the project directory, you can run:
+Aqui vai estar o passo-a-passo de como instalar e rodar a API localmente
 
-### `npm start`
+### 1. Requisitos
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+**Tenha o Node instalado na máquina** [Link para o Node](https://nodejs.org/pt-br/download)
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### 2. Clone o projeto
 
-### `npm test`
+`git clone https://github.com/markium1/contrataFacil-app`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### 3. Dentro da pasta do projeto execute os seguintes comandos para iniciar e configurar o projeto
 
-### `npm run build`
+- **Instalar Dependências**
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Abra um terminal ou prompt de comando e navegue até a pasta do projeto clonado. Em seguida, execute o seguinte comando para instalar as dependências do projeto listadas no arquivo package.json
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+`npm install`
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- **Iniciar o Servidor de Desenvolvimento**
 
-### `npm run eject`
+Após as dependências serem instaladas, você pode iniciar o servidor de desenvolvimento para executar o projeto localmente. Use o comando:
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+`npm start`
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+- **Acessar o Projeto**
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+Seu projeto estará disponível na URL: **localhost:3000**
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+## Endpoints Principais
 
-## Learn More
+Aqui estão alguns dos principais endpoints da API:
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### 1. Cadastro Prestadores e Serviços
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+**Endpoint Prestador:** `/cadastro-prestador`
 
-### Code Splitting
+**Endpoint Servico:** `/cadastro-servico`
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+Descrição: Realiza o cadastro de um prestador ou serviço.
 
-### Analyzing the Bundle Size
+Método: POST
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+Parâmetros:
 
-### Making a Progressive Web App
+**Prestador**
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+- `nome` (string): O nome do prestador.
+- `telefone` (string): O telefone do prestador.
+- `email`(string): O email do prestador.
+- `foto`(file): Uma foto do prestador.
 
-### Advanced Configuration
+**Serviço**
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+- `nome` (string): O nome do serviço.
+- `descricao` (string): A descrição.
+- `valor`(string): O email do prestador.
+- `prestador_id`(int): ID do prestador de serviço.
 
-### Deployment
+### 2. Buscar Prestadores e Serviços
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+**Endpoint Prestador:** `/prestador`
 
-### `npm run build` fails to minify
+**Endpoint Servico:** `/servico`
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Descrição: Realiza a busca de um prestador ou serviço.
+
+Método: GET
+
+Parâmetros (opcionais):
+
+**Prestador**
+
+- `/api/prestador?page={num_page}` Para buscar por uma pagina específica
+- `/api/prestador?term={term}` Para filtrar por um termo
+
+**Serviço**
+
+- `/api/servico?page={num_page}` Para buscar por uma pagina específica
+- `/api/servico?term={term}` Para filtrar por um termo
+
+## **Observações**
+
+Esse projeto está configurado linkado a API [Contrata Fácil API](https://github.com/markium1/contrataFacil-api) caso queira simular os dois ao mesmo tempo seguir as orientações da API no link, caso não, a configure no arquivo da pasta src/axios/config.js.
