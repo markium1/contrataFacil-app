@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import "./Header.css";
+import { Dropdown } from "react-bootstrap";
 const Header = () => {
   return (
     <>
@@ -18,18 +19,28 @@ const Header = () => {
             </li>
           </ul>
 
-          <ul className="new-btn">
-            <li>
-              <Link to={`/cadastro-prestador`}>
-                <button>Cadastrar Prestador</button>
-              </Link>
-            </li>
-            <li>
-              <Link to={`/cadastro-servico`}>
-                <button>Cadastrar Serviço</button>
-              </Link>
-            </li>
-          </ul>
+          <Dropdown data-bs-theme="dark">
+            <Dropdown.Toggle variant="secondary" id="dropdown-basic">
+              Cadastros
+            </Dropdown.Toggle>
+            <Dropdown.Menu>
+              <Dropdown.Item>
+                <Link to={`/cadastro-prestador`}>
+                  <button className="new-btn">Cadastrar Prestador</button>
+                </Link>
+              </Dropdown.Item>
+              <Dropdown.Item>
+                <Link to={`/cadastro-servico`}>
+                  <button className="new-btn">Cadastrar Serviço</button>
+                </Link>
+              </Dropdown.Item>
+              <Dropdown.Item>
+                <Link to={`/cadastro-servico-csv`}>
+                  <button className="new-btn">Cadastrar Serviço CSV</button>
+                </Link>
+              </Dropdown.Item>
+            </Dropdown.Menu>
+          </Dropdown>
         </nav>
       </header>
     </>

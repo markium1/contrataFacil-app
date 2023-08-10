@@ -11,6 +11,7 @@ import Prestadores from "./routes/Prestadores";
 import Servicos from "./routes/Servicos";
 import FormularioPrestador from "./routes/FormularioPrestador";
 import FormularioServico from "./routes/FormularioServico";
+import FormularioUploadCSV from "./routes/FormularioCSV";
 
 const router = createBrowserRouter([
   {
@@ -35,6 +36,10 @@ const router = createBrowserRouter([
       {
         path: "/cadastro-servico",
         element: <FormularioServico />,
+      },
+      {
+        path: "/cadastro-servico-CSV",
+        element: <FormularioUploadCSV />,
       },
     ],
   },

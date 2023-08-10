@@ -115,7 +115,12 @@ const Formulario = ({ formConfig }) => {
               id="email"
               {...register("email", { required: true })}
             />
-            <input type="file" name="foto" onChange={handlePhotoChange} />
+            <input
+              type="file"
+              name="foto"
+              onChange={handlePhotoChange}
+              className="form-control"
+            />
             <Button variant="secondary" type="submit">
               Cadastrar
             </Button>
