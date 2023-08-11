@@ -42,6 +42,8 @@ Aqui estão alguns dos principais endpoints da API:
 
 **Endpoint Servico:** `/cadastro-servico`
 
+**Endpoint Servico:** `/cadastro-servico-csv`
+
 Descrição: Realiza o cadastro de um prestador ou serviço.
 
 Método: POST
@@ -61,6 +63,8 @@ Parâmetros:
 - `descricao` (string): A descrição.
 - `valor`(string): O email do prestador.
 - `prestador_id`(int): ID do prestador de serviço.
+
+- O Arquivo CSV de conter esses mesmos parâmetros separados por virgula **nome**, **descricao**, **valor**, **prestador_id**
 
 ### 2. Buscar Prestadores e Serviços
 

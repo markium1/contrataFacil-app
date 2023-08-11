@@ -1,22 +1,16 @@
 import React from "react";
 import api from "../axios/config";
-import Table from "react-bootstrap/Table";
-import TablePrestadores from "../Components/TablePrestadores/TablePrestadores";
+
 import { useState, useEffect } from "react";
 import { Pagination, Form, Button } from "react-bootstrap";
 import "./Prestador.css";
+import TablePrestadores from "../Components/TablePrestadores/TablePrestadores";
 const Prestadores = () => {
   const [prestadores, setPrestadores] = useState([]);
   const [paginaAtual, setPaginaAtual] = useState(1);
   const [qtPaginas, setQtPaginas] = useState(1);
   const [searchTerm, setSearchTerm] = useState("");
 
-  const [show, setShow] = useState(false);
-
-  const exibirModal = () => setShow(true);
-  const fecharModal = () => {
-    setShow(false);
-  };
   const getPrestadores = async (pagina) => {
     try {
       const response = await api.get(`/prestador?page=${pagina}`);
@@ -31,7 +25,7 @@ const Prestadores = () => {
     try {
       const response = await api.get(`prestador?term=${searchTerm}`);
       const { data } = response.data;
-      console.log(response.data);
+      console.log(data);
       setPrestadores(data);
     } catch (error) {
       console.error("Erro ao buscar resultados:", error);
@@ -39,6 +33,7 @@ const Prestadores = () => {
   };
   const mudarPagina = (pagina) => {
     setPaginaAtual(pagina);
+    setSearchTerm("");
   };
   useEffect(() => {
     getPrestadores(paginaAtual);
@@ -61,26 +56,12 @@ const Prestadores = () => {
           Pesquisar
         </Button>
       </Form>
-      <h2 className="font-weight-bold">Lista</h2>
-      <Table striped hover>
-        <thead>
-          <tr>
-            <th>Nome</th>
-            <th>Telefone</th>
-            <th>Email</th>
-            <th></th>
-          </tr>
-        </thead>
-        <tbody>
-          {prestadores.length === 0 ? (
-            <p>Carregando...</p>
-          ) : (
-            prestadores.map((prestador) => (
-              <TablePrestadores key={prestador.id} prestador={prestador} />
-            ))
-          )}
-        </tbody>
-      </Table>
+      {prestadores.length === 0 ? (
+        <p>Carregando...</p>
+      ) : (
+        <TablePrestadores prestadores={prestadores} />
+      )}
+
       <Pagination>
         {Array.from({ length: qtPaginas }, (_, index) => (
           <Pagination.Item

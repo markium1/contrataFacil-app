@@ -1,7 +1,7 @@
 import React from "react";
 import api from "../axios/config";
 import { useState, useEffect } from "react";
-import Table from "react-bootstrap/Table";
+
 import TableServicos from "../Components/TableServicos/TableServicos";
 import { Pagination, Form, Button } from "react-bootstrap";
 const Servicos = () => {
@@ -12,7 +12,7 @@ const Servicos = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const getServicos = async (paginaAtual) => {
     try {
-      const response = await api.get(`/servico?page${paginaAtual}`);
+      const response = await api.get(`/servico?page=${paginaAtual}`);
       const { data } = response.data;
       setServicos(data);
       setQtPaginas(response.data.last_page);
@@ -33,6 +33,7 @@ const Servicos = () => {
   };
   const mudarPagina = (pagina) => {
     setPaginaAtual(pagina);
+    setSearchTerm("");
   };
   useEffect(() => {
     getServicos(paginaAtual);
@@ -54,26 +55,11 @@ const Servicos = () => {
           Pesquisar
         </Button>
       </Form>
-      <h2 className="font-weight-bold">Lista</h2>
-      <Table striped hover>
-        <thead>
-          <tr>
-            <th>Titulo</th>
-            <th>Descricao</th>
-            <th>Valor</th>
-            <th>Prestador</th>
-          </tr>
-        </thead>
-        <tbody>
-          {servicos.length === 0 ? (
-            <p>Carregando...</p>
-          ) : (
-            servicos.map((servico) => (
-              <TableServicos key={servico.id} servico={servico} />
-            ))
-          )}
-        </tbody>
-      </Table>
+      {servicos.length === 0 ? (
+        <p>Carregando...</p>
+      ) : (
+        <TableServicos servicos={servicos} />
+      )}
 
       <Pagination>
         {Array.from({ length: qtPaginas }, (_, index) => (

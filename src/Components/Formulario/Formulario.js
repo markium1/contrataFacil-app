@@ -1,15 +1,13 @@
 import React from "react";
 import "./Formulario.css";
-import { Button, Modal } from "react-bootstrap";
+import { Button } from "react-bootstrap";
 import { useState, useEffect } from "react";
 import api from "../../axios/config";
-import { useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import ConfirmacaoFormulario from "../Modal/ConfirmacaoFormulario";
 import InputMask from "react-input-mask";
 const Formulario = ({ formConfig }) => {
   const [prestadores, setPrestadores] = useState([]);
-  const navigate = useNavigate();
   const [show, setShow] = useState(false);
   const [photo, setPhoto] = useState(null);
 
@@ -25,7 +23,6 @@ const Formulario = ({ formConfig }) => {
   const {
     register,
     handleSubmit,
-    watch,
     reset,
     formState: { errors },
   } = useForm();
@@ -115,6 +112,7 @@ const Formulario = ({ formConfig }) => {
               id="email"
               {...register("email", { required: true })}
             />
+            <label htmlFor="foto">Foto:</label>
             <input
               type="file"
               name="foto"
